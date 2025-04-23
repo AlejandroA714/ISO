@@ -1,0 +1,25 @@
+form .form-label {
+  font-weight: 600;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+}
+
+button.btn-sm {
+  width: 48%;
+}
