@@ -46,6 +46,7 @@ out/
 # Node / Angular
 # ========================
 /node_modules/
+frontend/node_modules
 dist/
 tmp/
 temp/
