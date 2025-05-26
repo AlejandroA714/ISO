@@ -1,0 +1,13 @@
+<div class="container mt-5" *ngIf="mascota">
+  <h2 class="mb-4">Detalles de la Mascota</h2>
+  <div class="card">
+    <div class="card-body">
+       <img *ngIf="mascota.imagen" [src]="'data:image/jpeg;base64,' + mascota.imagen"   [style.maxHeight]="'400px'"
+  [style.objectFit]="'cover'" class="card-img-top img-fluid" alt="{{ mascota.nombre }}">
+      <h4 class="card-title">{{ mascota.nombre }}</h4>
+      <p class="card-text"><strong>Raza:</strong> {{ mascota.raza }}</p>
+      <p class="card-text"><strong>Edad:</strong> {{ mascota.edad }} años</p>
+      <p class="card-text"><strong>Estado:</strong> {{ mascota.estado }}</p>
+    </div>
+  </div>
+</div>

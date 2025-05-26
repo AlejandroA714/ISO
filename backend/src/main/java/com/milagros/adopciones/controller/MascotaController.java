@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/api/mascotas")
 public class MascotaController {
 
@@ -20,6 +19,11 @@ public class MascotaController {
     @GetMapping
     public List<Mascota> listar() {
         return mascotaService.listar();
+    }
+
+    @GetMapping("/available")
+    public List<Mascota> listarDisponibles() {
+        return mascotaService.getDisponibles();
     }
 
     @PostMapping

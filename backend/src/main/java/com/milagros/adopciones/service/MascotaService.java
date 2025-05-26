@@ -15,16 +15,21 @@ public class MascotaService {
         this.mascotaRepository = mascotaRepository;
     }
 
+    public List<Mascota> getDisponibles() {
+        return mascotaRepository.findByEstado("disponible");
+    }
+
+    public Mascota obtenerPorId(Long id) {
+        return mascotaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
+    }
+
     public List<Mascota> listar() {
         return mascotaRepository.findAll();
     }
 
     public Mascota guardar(Mascota mascota) {
         return mascotaRepository.save(mascota);
-    }
-
-    public Mascota obtenerPorId(Long id) {
-        return mascotaRepository.findById(id).orElse(null);
     }
 
     public void eliminar(Long id) {

@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
@@ -29,8 +28,10 @@ public class Mascota {
     private Long id;
 
     private String nombre;
-    private String especie;
+    private String sexo;
     private String raza;
+
+    private int edad;
 
     @Column(nullable = false)
     private String estado;

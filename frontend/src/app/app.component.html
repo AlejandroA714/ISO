@@ -8,14 +8,27 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav mb-2 mb-lg-0 gap-2">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link" href="/">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Mascotas</a>
+          <a class="nav-link" href="/adoptar" routerLink="/adoptar">Adoptar</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contacto</a>
-        </li>
+     <ng-container *ngIf="isLoggedIn">
+         <li class="nav-item">
+            <a class="nav-link" href="/admin" routerLink="/admin">Mascotas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/formularios" routerLink="/admin">Formularios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Cerrar sesión</a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" href="/login" routerLink="/login">Iniciar sesión</a>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>

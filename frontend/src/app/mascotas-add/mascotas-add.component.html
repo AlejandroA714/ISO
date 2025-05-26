@@ -1,0 +1,80 @@
+<div class="container mt-4">
+  <h3 class="mb-4">Registrar Nueva Mascota</h3>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="row g-3" novalidate>
+
+    <!-- Nombre -->
+    <div class="col-md-6">
+      <label class="form-label">Nombre</label>
+      <input type="text" formControlName="nombre"
+             [ngClass]="{ 'form-control': true, 'is-invalid': f.nombre.touched && f.nombre.invalid }" />
+      <div class="invalid-feedback" *ngIf="f.nombre.touched && f.nombre.invalid">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <!-- Edad -->
+    <div class="col-md-6">
+      <label class="form-label">Edad</label>
+      <input type="number" formControlName="edad"
+             [ngClass]="{ 'form-control': true, 'is-invalid': f.edad.touched && f.edad.invalid }" />
+      <div class="invalid-feedback" *ngIf="f.edad.touched && f.edad.invalid">
+        Edad inválida.
+      </div>
+    </div>
+
+    <!-- Estado -->
+    <div class="col-md-6">
+      <label class="form-label">Estado</label>
+      <select formControlName="estado"
+              [ngClass]="{ 'form-select': true, 'is-invalid': f.estado.touched && f.estado.invalid }">
+        <option value="disponible">Disponible</option>
+        <option value="en proceso">En proceso</option>
+        <option value="adoptado">Adoptado</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="f.estado.touched && f.estado.invalid">
+        Selecciona un estado.
+      </div>
+    </div>
+
+    <!-- Raza -->
+    <div class="col-md-6">
+      <label class="form-label">Raza</label>
+      <input type="text" formControlName="raza"
+             [ngClass]="{ 'form-control': true, 'is-invalid': f.raza.touched && f.raza.invalid }" />
+      <div class="invalid-feedback" *ngIf="f.raza.touched && f.raza.invalid">
+        La raza es obligatoria.
+      </div>
+    </div>
+
+    <!-- Sexo -->
+    <div class="col-md-6">
+      <label class="form-label">Sexo</label>
+      <select formControlName="sexo"
+              [ngClass]="{ 'form-select': true, 'is-invalid': f.sexo.touched && f.sexo.invalid }">
+        <option value="">Seleccione</option>
+        <option value="Macho">Macho</option>
+        <option value="Hembra">Hembra</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="f.sexo.touched && f.sexo.invalid">
+        Selecciona el sexo.
+      </div>
+    </div>
+
+    <!-- Imagen -->
+    <div class="col-md-6">
+      <label class="form-label">Imagen</label>
+      <input type="file" (change)="onFileChange($event)"
+             [ngClass]="{ 'form-control': true, 'is-invalid': f.imagen.touched && f.imagen.invalid }" />
+      <div class="invalid-feedback" *ngIf="f.imagen.touched && f.imagen.invalid">
+        Debes seleccionar una imagen.
+      </div>
+    </div>
+
+    <!-- Botón -->
+    <div class="col-12">
+      <button type="submit" class="btn btn-success">Guardar Mascota</button>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,29 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Mascotas Registradas</h3>
+    <button class="btn btn-success" (click)="agregar()">+ Nueva Mascota</button>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Raza</th>
+        <th>Edad</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of mascotas">
+        <td>{{ m.nombre }}</td>
+        <td>{{ m.raza }}</td>
+        <td>{{ m.edad }}</td>
+        <td>{{ m.estado }}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editar(m.id)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
