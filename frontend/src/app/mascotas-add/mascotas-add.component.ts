@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MascotaService } from '../services/mascota.service';
+import { Mascota, MascotaService } from '../services/mascota.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,7 +17,7 @@ export class AgregarMascotaComponent {
 
   form = this.fb.group({
     nombre: ['', [Validators.required, Validators.minLength(2)]],
-    edad: [null, [Validators.required, Validators.min(0)]],
+    edad: [0, [Validators.required, Validators.min(0)]],
     estado: ['disponible', [Validators.required]],
     raza: ['', [Validators.required]],
     sexo: ['', [Validators.required]],
@@ -30,7 +30,7 @@ export class AgregarMascotaComponent {
       return;
     }
 
-    this.mascotaService.crearMascota(this.form.value).subscribe({
+    this.mascotaService.crearMascota(this.form.getRawValue() as Mascota).subscribe({
       next: () => {
         alert('Mascota registrada con éxito');
         this.router.navigate(['/admin/mascotas']);

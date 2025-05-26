@@ -2,6 +2,7 @@ package com.milagros.adopciones.controller;
 
 import com.milagros.adopciones.model.Mascota;
 import com.milagros.adopciones.service.MascotaService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,12 @@ public class MascotaController {
     @GetMapping
     public List<Mascota> listar() {
         return mascotaService.listar();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Mascota> actualizar(@PathVariable Long id, @RequestBody Mascota mascota) {
+        Mascota actualizada = mascotaService.actualizar(id, mascota);
+        return ResponseEntity.ok(actualizada);
     }
 
     @GetMapping("/available")

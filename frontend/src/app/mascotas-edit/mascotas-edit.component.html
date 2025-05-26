@@ -1,7 +1,10 @@
 <div class="container mt-4">
-  <h3 class="mb-4">Registrar Nueva Mascota</h3>
+  <h3 class="mb-4">Editar Mascota</h3>
 
   <form [formGroup]="form" (ngSubmit)="guardar()" class="row g-3" novalidate>
+
+    <!-- Campos: nombre, edad, estado, raza, sexo, imagen -->
+    <!-- Mismo HTML que el de agregar, puedes reutilizar el contenido -->
 
     <!-- Nombre -->
     <div class="col-md-6">
@@ -28,9 +31,9 @@
       <label class="form-label">Estado</label>
       <select formControlName="estado"
               [ngClass]="{ 'form-select': true, 'is-invalid': f.estado.touched && f.estado.invalid }">
-        <option value="DISPONIBLE" selected>Disponible</option>
-        <option value="EN_ADOPCION">En proceso</option>
-        <option value="ADOPTADA">Adoptado</option>
+        <option value="disponible">Disponible</option>
+        <option value="en proceso">En proceso</option>
+        <option value="adoptado">Adoptado</option>
       </select>
       <div class="invalid-feedback" *ngIf="f.estado.touched && f.estado.invalid">
         Selecciona un estado.
@@ -61,20 +64,23 @@
       </div>
     </div>
 
-    <!-- Imagen -->
-    <div class="col-md-6">
-      <label class="form-label">Imagen</label>
-      <input type="file" accept="image/*" (change)="onFileChange($event)"
-             [ngClass]="{ 'form-control': true, 'is-invalid': f.imagen.touched && f.imagen.invalid }" />
-      <div class="invalid-feedback" *ngIf="f.imagen.touched && f.imagen.invalid">
-        Debes seleccionar una imagen.
-      </div>
-    </div>
+<div class="col-12">
+  <label class="form-label">Imagen actual</label>
+  <img
+    *ngIf="imagenPrevia"
+    [src]="'data:image/jpeg;base64,' + imagenPrevia"
+    class="img-thumbnail mb-2"
+    style="max-height: 200px;"
+  />
+</div>
 
-    <!-- Botón -->
+<div class="col-12">
+  <label class="form-label">Cambiar imagen (opcional)</label>
+  <input type="file" (change)="onFileChange($event)" class="form-control" />
+</div>
+
     <div class="col-12">
-      <button type="submit" class="btn btn-success">Guardar Mascota</button>
+      <button type="submit" class="btn btn-primary">Actualizar Mascota</button>
     </div>
   </form>
 </div>
-

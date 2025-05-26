@@ -6,6 +6,7 @@ import { AdoptionRequestsComponent } from './adoption-requests/adoption-requests
 import { DetailsComponent } from './details/details.component';
 import { MascotasAdminComponent } from './mascotas-admin/mascotas-admin.component';
 import { AgregarMascotaComponent } from './mascotas-add/mascotas-add.component';
+import { EditarMascotaComponent } from './mascotas-edit/mascotas-edit.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'mascotas', pathMatch: 'full' },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'formularios', component: AdoptionRequestsComponent},
   { path: 'details/:id', component: DetailsComponent},
   { path: 'admin', component: MascotasAdminComponent},
-  { path: 'admin/add', component: AgregarMascotaComponent}
+  { path: 'admin/add', component: AgregarMascotaComponent},
+  { path: 'admin/editar/:id', component: EditarMascotaComponent}
 ];

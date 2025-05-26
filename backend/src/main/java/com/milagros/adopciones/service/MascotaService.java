@@ -24,6 +24,20 @@ public class MascotaService {
                 .orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
     }
 
+    public Mascota actualizar(Long id, Mascota nuevaMascota) {
+        Mascota existente = mascotaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Mascota no encontrada"));
+
+        existente.setNombre(nuevaMascota.getNombre());
+        existente.setEdad(nuevaMascota.getEdad());
+        existente.setEstado(nuevaMascota.getEstado());
+        existente.setRaza(nuevaMascota.getRaza());
+        existente.setSexo(nuevaMascota.getSexo());
+        existente.setImagen(nuevaMascota.getImagen());
+
+        return mascotaRepository.save(existente);
+    }
+
     public List<Mascota> listar() {
         return mascotaRepository.findAll();
     }

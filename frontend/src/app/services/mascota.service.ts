@@ -16,12 +16,18 @@ export interface Mascota {
   providedIn: 'root'
 })
 export class MascotaService {
-  crearMascota(value: Partial<{ nombre: string | null; edad: null; estado: string | null; }>): Observable<any> {
-    return this.http.post(this.apiUrl,{});
-  }
+
   private http = inject(HttpClient);
   private apiUrl = 'http://localhost:8081/api/mascotas';
 
+  crearMascota(value: Mascota): Observable<any> {
+    console.log(value);
+    return this.http.post(this.apiUrl,value);
+  }
+
+  actualizarMascota(id: number, mascota: any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/${id}`, mascota);
+}
   getMascotas(): Observable<any> {
     return this.http.get<any[]>(this.apiUrl);
   }
